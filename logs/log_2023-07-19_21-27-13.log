@@ -1,0 +1,11 @@
+
+-----
+Test: tests/test_authorisation.py::test_registration (call)
+Start time: 2023-07-19 21:27:15.601947
+Start name method: registration
+
+End time: 2023-07-19 21:27:34.600407
+End name method: registration
+URL: https://shop.tastycoffee.ru/create-account
+
+-----

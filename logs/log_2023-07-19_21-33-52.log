@@ -1,0 +1,33 @@
+
+-----
+Test: tests/test_authorisation.py::test_authorisation_valid_data (call)
+Start time: 2023-07-19 21:33:54.468508
+Start name method: authorisation
+
+End time: 2023-07-19 21:34:14.111329
+End name method: authorisation
+URL: https://shop.tastycoffee.ru/
+
+-----
+
+-----
+Test: tests/test_authorisation.py::test_registration (call)
+Start time: 2023-07-19 21:34:24.512393
+Start name method: registration
+
+End time: 2023-07-19 21:34:43.144218
+End name method: registration
+URL: https://shop.tastycoffee.ru/create-account
+
+-----
+
+-----
+Test: tests/test_authorisation.py::test_authorisation_invalid_data (call)
+Start time: 2023-07-19 21:34:55.506045
+Start name method: authorisation
+
+End time: 2023-07-19 21:35:08.027394
+End name method: authorisation
+URL: https://shop.tastycoffee.ru/
+
+-----
