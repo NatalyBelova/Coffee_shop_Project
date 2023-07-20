@@ -11,7 +11,7 @@ from utilities.logger import Logger
 
 
 """Страница каталога кофе"""
-class Catalog_page(Base):
+class Shopping_cart_page(Base):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -20,14 +20,10 @@ class Catalog_page(Base):
 
     """Locators"""
 
-    add_to_cart_natti = '//*[@id="catalog-products"]/div[1]/div[1]/form/div[6]/div/div[3]/a'
     go_to_cart = "//a[@class='blackBtn']"
 
 
     """Getters"""
-
-    def get_add_to_cart_natti(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.add_to_cart_natti)))
 
     def get_go_to_cart(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.go_to_cart)))
@@ -36,10 +32,6 @@ class Catalog_page(Base):
 
 
     """Actions"""
-
-    def click_add_to_cart_natti(self):
-        self.get_add_to_cart_natti().click()
-        print("Click Add to Cart Natti")
 
     def click_go_to_cart(self):
         self.get_go_to_cart().click()
@@ -57,5 +49,4 @@ class Catalog_page(Base):
             self.click_go_to_cart()
             self.get_screenshot()
             Logger.add_end_step(url=self.driver.current_url, method='select_product')
-        
 

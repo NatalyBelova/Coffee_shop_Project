@@ -21,6 +21,7 @@ class Main_page(Base):
     """Locators"""
 
     buy_button = "//a[@class='m-no-link menu__link-h menuAc openMob ']"
+    coffee = "/html/body/div[1]/header/div[1]/div/div[8]/div[1]/ul/li[1]/a"
     change_city_button = "//span[@class='city_header_name']"
     city_moscow = "//a[@data-id='5']"
 
@@ -30,6 +31,9 @@ class Main_page(Base):
     def get_buy_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.buy_button)))
 
+    def get_coffee(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.coffee)))
+
 
 
     """Actions"""
@@ -37,6 +41,10 @@ class Main_page(Base):
     def click_buy_button(self):
         self.get_buy_button().click()
         print("Click Buy Button")
+
+    def click_coffee(self):
+        self.get_coffee().click()
+        print("Click Coffee")
 
 
 
@@ -50,5 +58,6 @@ class Main_page(Base):
             self.driver.maximize_window()
             self.get_current_url()
             self.click_buy_button()
+            self.click_coffee()
             Logger.add_end_step(url=self.driver.current_url, method='select_menu')
 
