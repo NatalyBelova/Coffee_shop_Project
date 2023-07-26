@@ -23,7 +23,6 @@ class Catalog_page(Base):
 
     add_to_cart_natti = "//span[@class='buyText buyText_780']"
     go_to_cart = "//a[@class='blackBtn']"
-
     bright_espresso = "//label[@for='filter1a']"
     balanced_espresso = "//label[@for='filter2a']"
     bright_filter = "//label[@for='filter3a']"

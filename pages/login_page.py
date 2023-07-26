@@ -32,7 +32,6 @@ class Login_page(Base):
     password = "//input[@id='password']"
     enter_button = "//input[@id='sign-in']"
     registration_button = "//div[@class='greyLink-wrap']"
-
     name_surname = "//input[@class='full_name suggestions-input']"
     email_registration = "//input[@placeholder='* E-Mail']"
     phone_number = "//input[@placeholder='* Телефон']"
@@ -133,7 +132,7 @@ class Login_page(Base):
     def authorisation_valid_data(self):
         with allure.step("Authorisation Valid Data"):
             Logger.add_start_step(method='authorisation')
-            self.driver.get(self.url) # Метод, который открывает нашу url
+            self.driver.get(self.url)
             self.driver.maximize_window()
             self.get_current_url()
             self.click_login_button()
@@ -149,7 +148,7 @@ class Login_page(Base):
     def registration(self):
         with allure.step("Registration"):
             Logger.add_start_step(method='registration')
-            self.driver.get(self.url) # Метод, который открывает нашу url
+            self.driver.get(self.url)
             self.driver.maximize_window()
             self.get_current_url()
             self.click_registration_button()
@@ -169,8 +168,8 @@ class Login_page(Base):
     """Метод авторизации в существующей учетной записи с неверными данными. Ожидание: ошибка"""
     def authorisation_invalid_data(self):
         with allure.step("Authorisation Invalid Data"):
-            Logger.add_start_step(method='authorisation')
-            self.driver.get(self.url) # Метод, который открывает нашу url
+            Logger.add_start_step(method='authorisation_invalid_data')
+            self.driver.get(self.url)
             self.driver.maximize_window()
             self.get_current_url()
             self.click_login_button()
@@ -179,6 +178,6 @@ class Login_page(Base):
             self.click_enter_button()
             time.sleep(0.5)
             self.get_screenshot()
-            Logger.add_end_step(url=self.driver.current_url, method='authorisation')
+            Logger.add_end_step(url=self.driver.current_url, method='authorisation_invalid_data')
 
 

@@ -93,16 +93,16 @@ class Shopping_cart_page(Base):
     """Methods"""
 
     """Добавление данных о покупателе в заказ"""
-    def buy_product(self):
-        with allure.step("Select product"):
-            Logger.add_start_step(method='select_product')
+    def ordering_product(self):
+        with allure.step("Ordering product"):
+            Logger.add_start_step(method='ordering_product')
             fake = Faker("ru_RU")
             self.input_name_surname(fake.name())
             time.sleep(1)
             self.get_name_surname().send_keys(Keys.RETURN)
             self.input_email(fake.ascii_free_email())
             self.input_phone_number(fake.phone_number())
-            Logger.add_end_step(url=self.driver.current_url, method='select_product')
+            Logger.add_end_step(url=self.driver.current_url, method='ordering_product')
 
 
 

@@ -10,63 +10,58 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 
-from pages.login_page import Login_page
+from pages.main_page import Main_page
 
 
-"""Тест Проверка входа уже существующего пользователя"""
+
+"""Проверка верной работы строки поиска по слову 'Шоколад'"""
 @pytest.mark.run(order=1)
-@allure.description("Test Authorisation")
-def test_authorisation_valid_data():
+@allure.description("Test Search 1")
+def test_search_1():
     options = Options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
     service = Service(executable_path='C:\\Users\\user\\PycharmProjects\\resource\\chromedriver.exe', chrome_options = options)
     driver = webdriver.Chrome(service=service)
     print("Start Test 1")
 
-    login = Login_page(driver)
-    login.authorisation_valid_data()
+    mp = Main_page(driver)
+    mp.search_chocolate()
 
     print("Finish Test 1")
     driver.quit()
 
 
-
-"""Тест Попытка регистрации в уже существующей учетной записи. Ожидаемый результат: невозможность регистрации, ошибка"""
+"""Проверка верной работы строки поиска по слову 'Подарочный сертификат'"""
 @pytest.mark.run(order=2)
-@allure.description("Test Registering an existing user")
-def test_registration():
+@allure.description("Test Search 2")
+def test_search_2():
     options = Options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
     service = Service(executable_path='C:\\Users\\user\\PycharmProjects\\resource\\chromedriver.exe', chrome_options = options)
     driver = webdriver.Chrome(service=service)
     print("Start Test 2")
 
-    login = Login_page(driver)
-    login.registration()
+    mp = Main_page(driver)
+    mp.search_gift_certificate()
 
     print("Finish Test 2")
     driver.quit()
 
 
-
-"""Тест Проверка входа уже существующего пользователя с неверными данными. Ожидание: ошибка"""
+"""Проверка верной работы строки поиска по слову 'Бразилиа можиана'"""
 @pytest.mark.run(order=3)
-@allure.description("Test Authorisation Invalid Data")
-def test_authorisation_invalid_data():
+@allure.description("Test Search 3")
+def test_search_3():
     options = Options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
     service = Service(executable_path='C:\\Users\\user\\PycharmProjects\\resource\\chromedriver.exe', chrome_options = options)
     driver = webdriver.Chrome(service=service)
     print("Start Test 3")
 
-    login = Login_page(driver)
-    login.authorisation_invalid_data()
+    mp = Main_page(driver)
+    mp.search_brazil_mogiana()
 
     print("Finish Test 3")
     driver.quit()
-
 
 
