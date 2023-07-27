@@ -36,6 +36,17 @@ class Main_page(Base):
     city_Omsk = "//a[@data-id='23']"
     city_Kazan = "//a[@data-id='30']"
     city_Yekaterinburg = "//a[@data-id='22']"
+    email = "//input[@title='Введите ваш e-mail']"
+    checkbox_consent = "/html/body/div[3]/div[7]/div/div/div/div[1]/form/div[2]/label/span[1]"
+    subscription_email = "//input[@class='btnRn']"
+
+    reviews = "//span[@class='reviewsCount']"
+    community = "/html/body/div[1]/header/div[1]/div/div[8]/div[3]/a"
+    read = "/html/body/div[1]/header/div[1]/div/div[8]/div[4]/a"
+    coffee_magazine = "/html/body/div[1]/header/div[1]/div/div[8]/div[4]/ul/li[1]"
+    working_conditions = "/html/body/div[1]/header/div[1]/div/div[8]/div[5]/a"
+    discount_system = "/html/body/div[1]/header/div[1]/div/div[8]/div[5]/ul/li[2]"
+
 
 
     """Getters"""
@@ -75,6 +86,33 @@ class Main_page(Base):
 
     def get_city_Yekaterinburg(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.city_Yekaterinburg)))
+
+    def get_email(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.email)))
+
+    def get_checkbox_consent(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_consent)))
+
+    def get_subscription_email(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.subscription_email)))
+
+    def get_reviews(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.reviews)))
+
+    def get_community(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.community)))
+
+    def get_read(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.read)))
+
+    def get_working_conditions(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.working_conditions)))
+
+    def get_coffee_magazine(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.coffee_magazine)))
+
+    def get_discount_system(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.discount_system)))
 
 
 
@@ -128,6 +166,44 @@ class Main_page(Base):
     def click_city_Yekaterinburg(self):
         self.get_city_Yekaterinburg().click()
         print("Click city Yekaterinburg")
+
+    def input_email(self, email):
+        self.get_email().send_keys(email)
+        print("Input Email")
+
+    def click_checkbox_consent(self):
+        self.get_checkbox_consent().click()
+        print("Click Checkbox Consent")
+
+    def click_subscription_email(self):
+        self.get_subscription_email().click()
+        print("Click Subscription Email")
+
+    def click_reviews(self):
+        self.get_reviews().click()
+        print("Click Reviews")
+
+    def click_community(self):
+        self.get_community().click()
+        print("Click Community")
+
+    def click_read(self):
+        self.get_read().click()
+        print("Click Read")
+
+    def click_working_conditions(self):
+        self.get_working_conditions().click()
+        print("Click Working Conditions")
+
+    def click_coffee_magazine(self):
+        self.get_coffee_magazine().click()
+        print("Click Coffee Magazine")
+
+    def click_discount_systems(self):
+        self.get_discount_system().click()
+        print("Click Discount system")
+
+
 
 
 
@@ -278,3 +354,77 @@ class Main_page(Base):
             time.sleep(2)
             self.get_screenshot()
             Logger.add_end_step(url=self.driver.current_url, method='change_city')
+
+
+    """Оформление подписки на новости"""
+    def subscription_news(self):
+        with allure.step("Subscription news"):
+            Logger.add_start_step(method='subscription_news')
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.input_email("test.qa@yandex.ru")
+            self.click_checkbox_consent()
+            self.click_subscription_email()
+            self.get_screenshot()
+            Logger.add_end_step(url=self.driver.current_url, method='subscription_news')
+
+
+    """Переход на страницe Купить"""
+    def navigation_buy(self):
+        with allure.step("Navigation Buy"):
+            Logger.add_start_step(method='navigation_buy')
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.click_buy_button()
+            self.click_coffee()
+            self.get_screenshot()
+            Logger.add_end_step(url=self.driver.current_url, method='navigation_buy')
+
+
+    """Переход на страницу Отзывы"""
+    def navigation_reviews(self):
+        with allure.step("Navigation Reviews"):
+            Logger.add_start_step(method='navigation_reviews')
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.click_reviews()
+            self.get_screenshot()
+            Logger.add_end_step(url=self.driver.current_url, method='navigation_reviews')
+
+
+    """Переход на страницу Сообщество"""
+    def navigation_community(self):
+        with allure.step("Navigation Community"):
+            Logger.add_start_step(method='navigation_community')
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.click_community()
+            self.get_screenshot()
+            Logger.add_end_step(url=self.driver.current_url, method='navigation_community')
+
+
+    """Переход на страницу Читать"""
+    def navigation_read(self):
+        with allure.step("Navigation Read"):
+            Logger.add_start_step(method='navigation_read')
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.click_read()
+            self.click_coffee_magazine()
+            self.get_screenshot()
+            Logger.add_end_step(url=self.driver.current_url, method='navigation_read')
+
+
+    """Переход на страницу Условия работы"""
+    def navigation_working_conditions(self):
+        with allure.step("Navigation Working Conditions"):
+            Logger.add_start_step(method='navigation_working_conditions')
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.click_working_conditions()
+            self.click_discount_systems()
+            self.get_screenshot()
+            Logger.add_end_step(url=self.driver.current_url, method='navigation_working_conditions')
+
+
+
